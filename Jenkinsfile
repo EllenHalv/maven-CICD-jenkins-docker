@@ -9,6 +9,7 @@ pipeline {
                 echo 'Building...'
                 sh 'mvn -b'
                 echo 'Building success!'
+                }
         }
         stage('Test') {
             steps {
