@@ -1,16 +1,14 @@
 pipeline {
     agent any
     tools {
-
+        maven 'Maven'
     }
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
-                script {
-                    'mvn build'
-            }
-            echo 'Building success!'
+                sh 'mvn -b'
+                echo 'Building success!'
         }
         stage('Test') {
             steps {
