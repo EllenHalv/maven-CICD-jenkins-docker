@@ -29,6 +29,7 @@ pipeline {
             steps {
                 echo 'Delivering...'
                 sh 'chmod +x ./jenkins/delivery.sh'
+                sh './jenkins/delivery.sh'
                 echo 'Delivery success!'
             }
         }
