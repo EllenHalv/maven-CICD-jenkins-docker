@@ -11,16 +11,25 @@ pipeline {
                 echo 'Building success!'
                 }
         }
+
         stage('Test') {
             steps {
                 echo 'Testing...'
                 sh 'mvn -B test'
                 echo 'Testing success!'
             }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
         }
-        stage('Deploy') {
+
+        stage('Deliver') {
             steps {
-                echo 'Deploying...'
+                echo 'Delivering...'
+                sh './jenkins/delivery.sh'
+                echo 'Delivery success!'
             }
         }
     }
